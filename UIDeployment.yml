@@ -1,0 +1,25 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: k8uiapp-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: k8uiapp
+
+  template:
+    metadata:
+      labels:
+        app: k8uiapp
+
+    spec:
+      containers:
+        - name: k8uiapp
+          image: k8uiapp:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
